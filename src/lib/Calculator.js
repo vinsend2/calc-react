@@ -23,7 +23,7 @@ export default function Calculator (props) {
       });
       try {
         setStateAndNotify({
-          cur: evaluate(cur).toString(),
+          cur: evaluate(cur).toFixed(5).toString(),
           last: cur
         })
       } catch (e) {
@@ -65,7 +65,7 @@ export default function Calculator (props) {
         });
         break;
         case 'sqrt':
-          const sqrt = Math.sqrt(cur).toString()
+          const sqrt = Math.sqrt(cur).toFixed(5).toString()
           setStateAndNotify({
             last: '',
             cur: sqrt
@@ -73,7 +73,7 @@ export default function Calculator (props) {
           break;       
       case '=':
         try {
-          const output = evaluate(cur).toString()
+          const output = evaluate(cur).toFixed(7).toString()
           setStateAndNotify({
             last: cur + '=',
             cur: output
