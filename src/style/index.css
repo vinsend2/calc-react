@@ -1,0 +1,161 @@
+body {
+  background: linear-gradient(to left, #ff7b7b, #ff9999);  
+}
+
+#demo {
+  display: flex; 
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.calculator-main {
+  background: linear-gradient(155.23deg, #28518e 0%, #3a77d1 100%);
+  box-shadow: 0px 82px 158px rgba(0, 0, 0, 0.35),
+    0px 24.7206px 47.6324px rgba(0, 0, 0, 0.228056),
+    0px 10.2677px 19.7841px rgba(0, 0, 0, 0.175),
+    0px 3.71362px 7.1555px rgba(0, 0, 0, 0.121944);
+  border-radius: 18px;
+  height: 650px;
+  width: 454px;
+  position: relative;
+}
+
+.calculator-main::before {
+    content: "";
+    background-color: #FFBA10;    
+    width: 500px;
+    height: 690px;
+    display: block;
+    z-index: -1;
+    position: absolute;
+    top: -2%;
+    left: -5%;
+    background: #FFFFFF;
+    opacity: 0.2;
+    border-radius: 18px;
+  }
+
+.react-calculator {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 25% 1fr;
+}
+
+.result-panel {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  font-size: 56px;
+  text-align: right;
+  margin: 0px 48px;
+  line-height: 1.5rem;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+.cur-row {
+  flex: 1;
+  font-size: 56px;
+  width: 100%;
+  background-color: inherit;
+  color: white;
+  border: none;
+  outline: none;
+  text-align: right !important;
+}
+
+.last-row {
+  flex: 1;
+  font-size: 24px;
+  color: white;
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  max-width: 100%;
+  transform: translateY(-10px);
+}
+
+.column {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.row {
+  justify-content: space-evenly;
+}
+
+.button-panel {
+  flex: 5;
+}
+
+.button-panel .button {
+  margin: 0px 48px;
+  font-style: normal;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background: inherit;
+  color: white;
+  border: none;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 0px;
+  text-align: center;
+  border-radius: 50%;
+  height: 80px;
+  max-width: 80px;
+}
+
+.button.s2.button-equal {
+  background: white;
+  color: inherit;
+}
+
+.button:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #aaa;
+  opacity: 0;
+}
+
+.button-panel .clicked:before {
+  animation: react-calculator-click 0.5s ease-out 0s 1 alternate forwards;
+}
+
+.button-panel:focus {
+  outline: none;
+}
+
+@keyframes react-calculator-click {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 415px) {
+    .calculator-main {   
+        height: 100vh;
+        width: 100vw;
+        position: fixed;       
+        top: 0;
+        border-radius: 0;
+      }
+      .calculator-main::before {
+        content: none;
+     
+      }
+  }

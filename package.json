@@ -1,0 +1,30 @@
+{
+  "name": "react-calculator",
+  "version": "0.0.9",
+  "description": "react-calculator",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component && npm run copy-style && npm run copy-style-es",
+    "copy-style": "cp -r src/style lib/style",
+    "copy-style-es": "cp -r src/style es/style",
+    "clean": "nwb clean-module && nwb clean-demo",
+    "prepublishOnly": "npm run build",
+    "start": "nwb serve-react-demo",
+    "test": "nwb test-react",
+    "test:coverage": "nwb test-react --coverage",
+    "test:watch": "nwb test-react --server"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "nwb": "0.23.x",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
