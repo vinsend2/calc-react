@@ -1,8 +1,8 @@
-export const evaluate = getMathHandler();
+export const evaluate = getMathMain();
 
 
-function getMathHandler() {
-  const math = getMathFn();  
+function getMathMain() {
+  const math = getMath();  
   let divByZero = false;
 
   return applyMath;
@@ -11,9 +11,9 @@ function getMathHandler() {
 
   function applyMath(math_str) {
     divByZero = false;    
-    throwUnmatchedScopes(math_str);
+    delUnmatchedScopes(math_str);
     
-    math_str = deepRemoveScopes(math_str);    
+    math_str = fullDeleteScopes(math_str);    
     math_str = autoCorrect(math_str);
 
     let result = parseLinearMath(math_str);
@@ -21,7 +21,7 @@ function getMathHandler() {
   }
 
 
-  function deepRemoveScopes(str) {    
+  function fullDeleteScopes(str) {    
     str = autoCorrect(str);
 
         
@@ -32,7 +32,7 @@ function getMathHandler() {
     let open = 1;
     
     for( let i = index + 1; i <= 100000; i++ ) {
-      if( i === 100000 ) console.log("Кажется пошел бесконечный цикл");
+      if( i === 100000 ) console.log("Infinite cycle");
       
       scope += str[i];
       
@@ -45,7 +45,7 @@ function getMathHandler() {
       if( open === 0 ) {       
         // Показалось проще перезапускать функцию после каждой найденной скобки.
         // При этом учитывая и вложенные скобки scope.slice(1, -1)
-        return deepRemoveScopes( str.replace(scope, deepRemoveScopes( scope.slice(1, -1) ) ) );
+        return fullDeleteScopes( str.replace(scope, fullDeleteScopes( scope.slice(1, -1) ) ) );
       }
     }
   }
@@ -123,7 +123,7 @@ function getMathHandler() {
     
   }
 
-  function throwUnmatchedScopes(math_str) {
+  function delUnmatchedScopes(math_str) {
     let scopes_open = (math_str.match(/\(/g) || []).length;
     let scopes_close = (math_str.match(/\)/g) || []).length;
 
@@ -132,12 +132,11 @@ function getMathHandler() {
     }   
   }
 
-  function getMathFn() {
+  function getMath() {
     let local_math = {
       "+": (a, b) => Number(a) + Number(b),
       "-": (a, b) => a - b,
-      "*": (a, b) => a * b,  
-      "√": (a, b) => a * b,       
+      "*": (a, b) => a * b,      
       "/": (a, b) => {
         if( b === "0" ) {
           divByZero = true;

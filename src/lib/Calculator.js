@@ -19,11 +19,11 @@ export default function Calculator (props) {
       const pastedData = data.getData('Text')
       let cur;
       replacement.forEach((item) => {
-        cur = pastedData.replace(item.dist, item.reg);
+        cur = pastedData.replace(item.dist, item.reg);     
       });
-      try {
-        setStateAndNotify({
-          cur: evaluate(cur).toFixed(5).toString(),
+      try {       
+        setStateAndNotify({         
+          cur: evaluate(cur).toString(),
           last: cur
         })
       } catch (e) {
@@ -65,7 +65,7 @@ export default function Calculator (props) {
         });
         break;
         case 'sqrt':
-          const sqrt = Math.sqrt(cur).toFixed(5).toString()
+          const sqrt = Math.sqrt(cur).toString()
           setStateAndNotify({
             last: '',
             cur: sqrt
@@ -73,7 +73,8 @@ export default function Calculator (props) {
           break;       
       case '=':
         try {
-          const output = evaluate(cur).toFixed(7).toString()
+          console.log(cur)
+          const output = evaluate(cur).toString()
           setStateAndNotify({
             last: cur + '=',
             cur: output

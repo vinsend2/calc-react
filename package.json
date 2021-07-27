@@ -1,6 +1,6 @@
 {
   "name": "react-calculator",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "react-calculator",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -23,7 +23,7 @@
     "test:watch": "nwb test-react --server"
   },
   "devDependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",    
     "flow-bin": "^0.156.0",
     "nwb": "0.23.x",
     "react": "^16.8.6",
