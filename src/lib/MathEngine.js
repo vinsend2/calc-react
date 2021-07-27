@@ -7,7 +7,6 @@ function getMathMain() {
 
   return applyMath;
   
-  
 
   function applyMath(math_str) {
     divByZero = false;    
@@ -16,7 +15,7 @@ function getMathMain() {
     math_str = fullDeleteScopes(math_str);    
     math_str = autoCorrect(math_str);
 
-    let result = parseLinearMath(math_str);
+    const result = parseLinearMath(math_str);
     return divByZero ? "Error" : result;
   }
 
@@ -25,7 +24,7 @@ function getMathMain() {
     str = autoCorrect(str);
 
         
-    let index = str.indexOf("(");
+    const index = str.indexOf("(");
     if( index === -1 ) return parseLinearMath(str);
     
     let scope = "(";
@@ -59,7 +58,7 @@ function getMathMain() {
    
 
     function mul_div(math_str) {
-      let length = (math_str.match(/\/|\*/g) || []).length;
+      const length = (math_str.match(/\/|\*/g) || []).length;
       if (!length) return math_str;
 
       for (let i = 0; i < length; i++) {
@@ -80,7 +79,7 @@ function getMathMain() {
   
     function plus_minus(math_str) {
       
-      let length = (math_str.match(/\+|-/g) || []).length;
+      const length = (math_str.match(/\+|-/g) || []).length;
       if (!length) return math_str;
       
       for (let i = 0; i < length; i++) {
@@ -124,8 +123,8 @@ function getMathMain() {
   }
 
   function delUnmatchedScopes(math_str) {
-    let scopes_open = (math_str.match(/\(/g) || []).length;
-    let scopes_close = (math_str.match(/\)/g) || []).length;
+    const scopes_open = (math_str.match(/\(/g) || []).length;
+    const scopes_close = (math_str.match(/\)/g) || []).length;
 
     if (scopes_open !== scopes_close) {
       throw new Error("Unmatched parenthesis at " + math_str);
@@ -133,7 +132,7 @@ function getMathMain() {
   }
 
   function getMath() {
-    let local_math = {
+    const local_math = {
       "+": (a, b) => Number(a) + Number(b),
       "-": (a, b) => a - b,
       "*": (a, b) => a * b,      
@@ -147,6 +146,6 @@ function getMathMain() {
 
     return function math(a, operation, b) {     
       return local_math[operation](a, b);
-    }
+    };
   }
 }

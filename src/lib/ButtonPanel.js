@@ -3,23 +3,23 @@ import React, {useEffect} from 'react';
 export default function ButtonPanel (props) {
     
   function onClick(event){
-    let target = event.target;
+    const target = event.target;
     target.classList.remove('clicked');
     setTimeout(() => {
       target.classList.add('clicked');
     }, 0);
     props.onClick(target.dataset.value);
-    console.log(target.dataset.value)
-  }
+    console.log(target.dataset.value);
+  };
 
   useEffect(() => {
     let buttons = document.querySelectorAll('.react-calc button');
     buttons = [].slice.call(buttons);
-    const keyMapping = {}
+    const keyMapping = {};
     buttons.forEach((button) => {
       keyMapping[button.dataset.code] = button;
     });
-    props.onLoad(keyMapping)    
+    props.onLoad(keyMapping);    
 }, []);
 
     return (

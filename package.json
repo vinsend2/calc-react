@@ -18,12 +18,15 @@
     "prepublishOnly": "npm run build",
     "start": "nwb serve-react-demo",
     "flow": "flow",
+    "eslint": "eslint src/lib --fix",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server"
   },
   "devDependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1",    
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "eslint": "^7.31.0",
     "flow-bin": "^0.156.0",
     "nwb": "0.23.x",
     "react": "^16.8.6",
