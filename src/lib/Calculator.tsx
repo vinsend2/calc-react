@@ -27,8 +27,7 @@ export const Calculator: React.FC<CalculatorProps> = props => {
   
   
   function onPaste(event: any): void{
-    if(event.isTrusted) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    if(event.isTrusted) {    
       const data = event.clipboardData || (window as any).clipboardData;
       const pastedData = data.getData('Text') as string;
       let cur: string | unknown;
@@ -50,7 +49,6 @@ export const Calculator: React.FC<CalculatorProps> = props => {
   }
 
   function setStateAndNotify(newState: any): any {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call,  @typescript-eslint/no-unsafe-assignment  
     setState(props.onResultChange ? props.onResultChange({expression: newState.last, result: newState.cur}) : null);  
     setState(newState);
   }
