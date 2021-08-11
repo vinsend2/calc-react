@@ -1,4 +1,4 @@
-import Calculator from './lib/Calculator'
+import {Calculator} from './lib/Calculator.tsx'
 
 import './style/flex.css'
 import './style/index.css'

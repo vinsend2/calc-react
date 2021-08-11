@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export const replacement = [
   {
     reg: /\*/g,
@@ -10,19 +11,22 @@ export const replacement = [
     dest: '÷'
   },
   {
-    reg: /\=/g,
+    reg: /[=]/g,
     dest: ''
   }
   
   
 ];
+interface ResultPanelProps {
+	last: string;
+  cur: string;
+}
 
-
-export default function ResultPanel (props) {
+export const ResultPanel: React.FC<ResultPanelProps> = props => {
   
     const {last, cur} = props;
     let finalCur = cur, finalLast = last;
-    replacement.forEach((item) => {
+    replacement.forEach(item => {
       finalCur = finalCur.replace(item.reg, item.dest);
       finalLast = finalLast.replace(item.reg, item.dest);
     });
