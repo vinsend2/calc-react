@@ -4,7 +4,7 @@ import {evaluate} from "../src/lib/MathEngine.tsx";
 const assert = require('assert');
 
 it('2+2 = 4', () => {
-  assert.equal(evaluate(`2+2`), eval(4);
+  assert.equal(evaluate(`2+2`), eval(4));
 }); 
 it('2+2+(13*5-5) = 64', () => {
 	assert.equal(evaluate(`2+2+(13*5-5)`), eval(2+2+(13*5-5)));
